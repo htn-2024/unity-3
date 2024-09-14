@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2752391aa45f948d3a027ad2978f66fc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PedestalPrefab: {fileID: 6450953105674134403, guid: df2e127929f454278bae0ce9af5a1c9b,
+      type: 3}
+  - ParentTransform: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
