@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 118777955}
   - component: {fileID: 118777959}
   - component: {fileID: 118777958}
-  - component: {fileID: 118777960}
   m_Layer: 0
   m_Name: Left Controller
   m_TagString: Untagged
@@ -506,20 +505,6 @@ MonoBehaviour:
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &118777960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118777954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017c5e3933235514c9520e1dace2a4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionAssets:
-  - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &287139937
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +604,7 @@ Transform:
   m_GameObject: {fileID: 287139937}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0.741, z: 1.79}
+  m_LocalPosition: {x: 0.038, y: 0.741, z: 1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -754,7 +739,6 @@ GameObject:
   - component: {fileID: 512350707}
   - component: {fileID: 512350711}
   - component: {fileID: 512350710}
-  - component: {fileID: 512350712}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -1127,20 +1111,6 @@ MonoBehaviour:
     m_Reference: {fileID: -6447266317303757838, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &512350712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512350706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017c5e3933235514c9520e1dace2a4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionAssets:
-  - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &719101337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1157,7 +1127,7 @@ PrefabInstance:
     - target: {fileID: 7079028628379841702, guid: 06cd9e9af97d88946893bd961c4d7f4f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0191
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 7079028628379841702, guid: 06cd9e9af97d88946893bd961c4d7f4f,
         type: 3}
@@ -1296,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 9094329260281299331, guid: b7ee10ba487867d47a2942e352102583,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0191
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 9094329260281299331, guid: b7ee10ba487867d47a2942e352102583,
         type: 3}
@@ -1752,7 +1722,7 @@ Transform:
   m_GameObject: {fileID: 1188901507}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.126, y: 0.741, z: 1.79}
+  m_LocalPosition: {x: 2.88, y: 0.741, z: 1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1769,6 +1739,9 @@ GameObject:
   - component: {fileID: 1297281619}
   - component: {fileID: 1297281618}
   - component: {fileID: 1297281617}
+  - component: {fileID: 1297281622}
+  - component: {fileID: 1297281621}
+  - component: {fileID: 1297281620}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -1823,6 +1796,95 @@ Transform:
   - {fileID: 1408880798}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1297281620
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297281616}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.1
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1297281621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297281616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1e8c997df241c1a67045eeac79b41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 1297281622}
+  m_MoveSpeed: 1
+  m_EnableStrafe: 1
+  m_EnableFly: 0
+  m_UseGravity: 1
+  m_GravityApplicationMode: 1
+  m_ForwardSource: {fileID: 1561250467}
+  m_LeftHandMoveAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Hand Move
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 9df93081-879f-47f9-a987-67ee281e162b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RightHandMoveAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Hand Move
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 89440e0f-a953-4283-9392-40aa30c2086c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  m_HeadTransform: {fileID: 1561250467}
+  m_LeftControllerTransform: {fileID: 118777955}
+  m_RightControllerTransform: {fileID: 512350707}
+  m_LeftHandMovementDirection: 0
+  m_RightHandMovementDirection: 0
+--- !u!114 &1297281622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297281616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Timeout: 10
+  m_XROrigin: {fileID: 1297281618}
 --- !u!1001 &1404497119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2543,7 +2605,7 @@ Transform:
   m_GameObject: {fileID: 2094851910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.941, y: 0.741, z: 1.79}
+  m_LocalPosition: {x: -2.61, y: 0.741, z: 1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
