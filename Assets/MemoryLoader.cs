@@ -48,17 +48,26 @@ public class MemoryLoader : MonoBehaviour
     void ProcessMemories(string json)
     {
         var memories = JsonUtility.FromJson<MemoryCollection>(json);
-        int offset = 0;
+        int offsetX = 0;
+        int offsetZ = 0;
 
-        foreach (var memory in memories.memories)
+        for (int i = 0; i < memories.memories.Length; i++)
         {
+            var memory = memories.memories[i];
+
             Debug.Log("Instantiating pedestal for memory: " + memory.title);
 
             GameObject newPedestal = Instantiate(PedestalPrefab, ParentTransform);
-            newPedestal.transform.localPosition += new Vector3(offset, 0, 0);
-            offset += 4;
+            newPedestal.transform.localPosition += new Vector3(offsetX, 0, offsetZ);
+            offsetX += 4;
 
-            // Image (mediaUrl)
+            if ((i + 1) % 4 == 0)
+            {
+                offsetX = 0;
+                offsetZ -= 7;
+            }
+
+            // Assigning the image (mediaUrl)
             Image memoryImage = newPedestal.GetComponentInChildren<Image>();
             if (!string.IsNullOrEmpty(memory.mediaUrl))
             {
@@ -68,10 +77,10 @@ public class MemoryLoader : MonoBehaviour
             else
             {
                 Debug.LogWarning("No mediaUrl provided for memory with title: " + memory.title);
-                memoryImage.sprite = null; // Or assign a default sprite
+                memoryImage.sprite = null;
             }
 
-            // Title
+            // Assigning the title
             TextMeshProUGUI titleText = newPedestal.transform.Find("TextCard/Panel/TitleText").GetComponent<TextMeshProUGUI>();
             if (titleText != null)
             {
@@ -83,7 +92,7 @@ public class MemoryLoader : MonoBehaviour
                 Debug.LogError("TitleText not found!");
             }
 
-            // Description
+            // Assigning the description
             TextMeshProUGUI descriptionText = newPedestal.transform.Find("TextCard/Panel/DescriptionText").GetComponent<TextMeshProUGUI>();
             if (descriptionText != null)
             {
@@ -93,6 +102,26 @@ public class MemoryLoader : MonoBehaviour
             else
             {
                 Debug.LogError("DescriptionText not found!");
+            }
+
+            // Assigning the music (AudioClip)
+            AudioSource audioSource = newPedestal.transform.Find("AudioSource").GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                if (!string.IsNullOrEmpty(memory.music))
+                {
+                    Debug.Log("Loading Music from URL: " + memory.music);
+                    StartCoroutine(LoadAudio(memory.music, audioSource));
+                }
+                else
+                {
+                    Debug.LogWarning("No music URL provided for memory with title: " + memory.title);
+                    audioSource.clip = null; // Or leave empty if no music is provided
+                }
+            }
+            else
+            {
+                Debug.LogError("AudioSource component not found!");
             }
         }
     }
@@ -113,6 +142,23 @@ public class MemoryLoader : MonoBehaviour
             Debug.Log("Image loaded and assigned successfully.");
         }
     }
+
+    IEnumerator LoadAudio(string url, AudioSource audioSource)
+    {
+        UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Failed to load audio: " + request.error);
+        }
+        else
+        {
+            AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
+            audioSource.clip = clip;
+            Debug.Log("Audio loaded and assigned successfully.");
+        }
+    }
 }
 
 [System.Serializable]
@@ -122,6 +168,7 @@ public class Memory
     public string description;
     public string mediaUrl;
     public string recordingUrl;
+    public string music;
 }
 
 [System.Serializable]
@@ -129,3 +176,4 @@ public class MemoryCollection
 {
     public Memory[] memories;
 }
+
